@@ -1,5 +1,10 @@
 package uvg;
 
+//UVGBST tomado del ejemplo compartido por Michaelle durante la clase
+//
+
+
+
 public class UVGBST<T extends Comparable<T>> {
     
     public class Node<E extends Comparable<E>>{
@@ -91,6 +96,11 @@ public class UVGBST<T extends Comparable<T>> {
         this.root = null;
     }
 
+    
+    /** 
+     * @param newVal
+     * @return T
+     */
     public T add(T newVal){
         if(root == null){
             root = new Node<T>(newVal);
@@ -100,10 +110,19 @@ public class UVGBST<T extends Comparable<T>> {
         return root.addNode(newVal).value;
     }
 
+    
+    /** 
+     * @return Node<T>
+     */
     public Node<T> getRoot(){
         return root;
     }
 
+    
+    /** 
+     * @param key
+     * @return Node<T>
+     */
     public Node<T> getNode(T key){
         if(root == null){
             return null;
@@ -111,6 +130,12 @@ public class UVGBST<T extends Comparable<T>> {
         return root.getNode(key);
     }
 
+    
+    /** 
+     * @param node
+     * @param nodeDepth
+     * @return String
+     */
     public String inOrderTraversal(Node<T> node, int nodeDepth){
         String str = "";
         if(node.leftChild != null){
