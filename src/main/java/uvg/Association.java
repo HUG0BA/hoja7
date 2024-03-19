@@ -17,4 +17,9 @@ public class Association<K extends Comparable<K>, T> implements Comparable<Assoc
     public String toString(){
         return key.toString() + ":" + data.toString();
     }
+
+    public boolean equals(Association<K, T> other){
+        return this.key.equals(other.key) && this.data.equals(other.data);
+    }
+
 }

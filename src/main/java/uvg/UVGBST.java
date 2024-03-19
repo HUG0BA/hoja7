@@ -1,6 +1,6 @@
 package uvg;
 
-public class UVGBST<E extends Comparable<E>> {
+public class UVGBST<T extends Comparable<T>> {
     
     public class Node<E extends Comparable<E>>{
         public E value;
@@ -59,6 +59,7 @@ public class UVGBST<E extends Comparable<E>> {
 
         }
 
+
         public int nodeHeight(){
             int currHeight = -1;
             if(this.leftChild != null){
@@ -84,42 +85,42 @@ public class UVGBST<E extends Comparable<E>> {
         
     }
 
-    private Node<E> root;
+    private Node<T> root;
 
     public UVGBST(){
         this.root = null;
     }
 
-    public E add(E newVal){
+    public T add(T newVal){
         if(root == null){
-            root = new Node<E>(newVal);
+            root = new Node<T>(newVal);
             return root.value;
         }
 
         return root.addNode(newVal).value;
     }
 
-    public Node<E> getRoot(){
+    public Node<T> getRoot(){
         return root;
     }
 
-    public Node<E> getNode(E key){
+    public Node<T> getNode(T key){
         if(root == null){
             return null;
         }
         return root.getNode(key);
     }
 
-    public String inOrderTraversal(Node<E> node, int nodeDepth){
+    public String inOrderTraversal(Node<T> node, int nodeDepth){
         String str = "";
         if(node.leftChild != null){
-            str = str + inOrderTraversal(node.leftChild, nodeDepth + 1) + "\n";
+            str = str + inOrderTraversal(node.leftChild, nodeDepth + 1);
 
         }
-        str = " ".repeat(nodeDepth);
-        str = str + "->" +node.toString() + "\n";
+        //str = str + " ".repeat(nodeDepth*3);
+        str = str + "->" +node.toString();
         if(node.rightChild != null){
-            str = str + inOrderTraversal(node.rightChild, nodeDepth + 1) + "\n";
+            str = str + inOrderTraversal(node.rightChild, nodeDepth + 1);
         }
         return str;
          
